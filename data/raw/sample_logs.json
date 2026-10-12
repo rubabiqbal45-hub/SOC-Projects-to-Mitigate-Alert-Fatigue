@@ -1,0 +1,32 @@
+[
+    {
+        "protocol_type": "TCP",
+        "service_flag": "HTTP",
+        "payload_entropy": 1.2,
+        "login_failures": 0
+    },
+    {
+        "protocol_type": "UDP",
+        "service_flag": "DNS",
+        "payload_entropy": 0.5,
+        "login_failures": 0
+    },
+    {
+        "protocol_type": "TCP",
+        "service_flag": "SSH",
+        "payload_entropy": 7.4,
+        "login_failures": 12
+    },
+    {
+        "protocol_type": "ICMP",
+        "service_flag": "PING",
+        "payload_entropy": 0.1,
+        "login_failures": 0
+    },
+    {
+        "protocol_type": "TCP",
+        "service_flag": "HTTP",
+        "payload_entropy": 1.5,
+        "login_failures": 1
+    }
+]
