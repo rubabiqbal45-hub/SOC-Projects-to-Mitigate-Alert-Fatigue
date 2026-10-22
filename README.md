@@ -10,8 +10,8 @@ The codebase and research dossiers are partitioned into two distinct implementat
 
 | 📂 Research Implementation Track | 🔬 Core Research Focus | 🛠️ Primary Toolkit |
 | :--- | :--- | :--- |
-| **[Project 1: SOC Alert Fatigue Mitigation Project of NMF](https://github.com)** | Conceptual design methodology, telemetry stream parsing models, and neural matrix logical thresholds. | Python, Structured Data Matrices, Anomaly Profiling |
-| **[Project 2: SOC Alert Triage RAG Pipeline Engine](https://github.com)** | Active runtime script automation pipeline, asset contextual database blending, and natural language triage reports. | Python 3.15, Native In-Context Prompts, `unittest` |
+| **[Project 1: SOC Alert Fatigue Mitigation Project of NMF]** | Conceptual design methodology, telemetry stream parsing models, and neural matrix logical thresholds. | Python, Structured Data Matrices, Anomaly Profiling |
+| **[Project 2: SOC Alert Triage RAG Pipeline Engine]** | Active runtime script automation pipeline, asset contextual database blending, and natural language triage reports. | Python 3.15, Native In-Context Prompts, `unittest` |
 
 ---
 
