@@ -64,7 +64,7 @@ if __name__ == "__main__":
     ]
     
     # 1. Scale data smoothly first
-    from feature_eng import run_native_nmf, calculate_anomaly_scores
+    from src.Project_1_NMF_Mitigation.feature_eng import run_native_nmf, calculate_anomaly_scores
     scaled_data = scale_matrix_data(raw_mock_matrix)
     
     # 2. Re-run matrix mathematical logic over adjusted fields
