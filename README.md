@@ -1,30 +1,55 @@
-# Context-Aware Security Operations Triage Architecture
+# SOC Alert Triage: Research Projects
 
-This repository hosts a dual-track cybersecurity research framework designed to optimize incident response workflows and mitigate analyst alert fatigue within modern Security Operations Centers (SOCs).
+Two Python projects that aim to reduce analyst alert fatigue in a Security Operations Center (SOC).
 
----
-
-## 🗺️ Project Workspace Directory Layout
-
-The codebase and research dossiers are partitioned into two distinct implementation tracks inside the `src/` directory. Click the links below to jump directly into each project's dedicated subfolder handbook:
-
-| 📂 Research Implementation Track | 🔬 Core Research Focus | 🛠️ Primary Toolkit |
+| Project | What it does | Tools |
 | :--- | :--- | :--- |
-| **[Project 1: SOC Alert Fatigue Mitigation Project of NMF]** | Conceptual design methodology, telemetry stream parsing models, and neural matrix logical thresholds. | Python, Structured Data Matrices, Anomaly Profiling |
-| **[Project 2: SOC Alert Triage RAG Pipeline Engine]** | Active runtime script automation pipeline, asset contextual database blending, and natural language triage reports. | Python 3.15, Native In-Context Prompts, `unittest` |
+| **1. ML Alert Triage and False-Positive Reduction Framework** | Parses structured logs, engineers features and scores alerts so analysts review the riskiest first. Includes risk-controlled suppression of low-risk alerts. | Python, feature engineering, gradient-boosted and baseline models |
+| **2. SOC Alert Triage RAG Pipeline** | Enriches each alert with asset context from an internal database and writes a plain-language triage summary. | Python, `unittest` |
+
+> **Note:** Project 1 was evaluated on a synthetic alert stream. The results show the pipeline and evaluation method work. They do not prove real-world performance.
 
 ---
 
-## 🧪 Automated Testing & Validation Framework
+## Project 1: Key results
 
-To ensure absolute logical precision across both tracking paths, the context-enrichment logic processes are fully monitored by a native unit testing suite.
+Test window of a synthetic stream: 48,000 alerts over 81 days, 10 rules, 60 hosts, with a time-based train, calibration and test split.
 
-To run the verification matrix from your root terminal, execute:
+| Result | Value |
+| :--- | :--- |
+| Alerts suppressed (primary mode) | 52.17% |
+| Attacks still caught (recall) | 99.35% |
+| Final model ROC-AUC (clean / under adversarial imitation) | 0.986 / 0.978 |
+| Mean time in queue (simulated) | 366.1 min down to 4.8 min |
+| SLA breach rate (simulated) | 96.3% down to 9.2% |
+| Analysts needed to meet the SLA (simulated) | 19 down to 9 |
+
+Limits: the data is synthetic, benign activity is cleaner than a real enterprise, and the queue parameters are assumed, not measured. A live SOC pilot would be needed before any operational claim.
+
+---
+
+## Project 2: Asset-aware triage
+
+Alerts are routed by the criticality of the asset involved:
+
+- **Critical assets:** elevated priority action.
+- **Medium assets (normal workstations):** baseline Tier 1 monitoring.
+- **Unknown assets (unregistered addresses):** low-risk tracking.
+
+---
+
+## Running the tests
+
+From the repository root:
+
 ```bash
 python -m unittest tests/test_data_loader.py
 ```
 
-### Expected Validation Diagnostics:
-*   `test_critical_asset_matching`: Verifies critical endpoints automatically trigger elevated priority action alerts.
-*   `test_medium_asset_matching`: Confirms normal workspace nodes route safely to baseline Tier-1 monitoring templates.
-*   `test_unknown_asset_fallback`: Validates unregistered network addresses gracefully drop to low-risk tracking scripts.
+The tests check that:
+
+- `test_critical_asset_matching`: critical endpoints trigger elevated priority.
+- `test_medium_asset_matching`: normal workstations route to baseline Tier 1 monitoring.
+- `test_unknown_asset_fallback`: unregistered addresses fall back to low-risk tracking.
+
+Requires Python 3 (add the exact version you ran).
